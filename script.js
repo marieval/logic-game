@@ -1,8 +1,13 @@
-const templateColorArray = Array.from(document.querySelectorAll(".template")); // Get the template-color-elements
+// TODO - CORRECT!! - if two colors are same and the second one is put correctly, it answers with white (instead of black)!!!
+// TODO: announce that player won
+// TODO: info about the rules
+
+let templateColorArray = Array.from(document.querySelectorAll(".template")); // Get the template-color-elements
 const pickColorArray = Array.from(document.querySelectorAll(".color")); // Get the pick-colors-elements as an array
 const attemptsArray = Array.from(document.querySelectorAll(".attempt")); // Get the attempt-rows as an array
 const checkBtn = document.querySelector("#check-btn");
 
+let templateColorCodes;
 let previousColorElement;
 let pickedColorCode;
 let guessActiveArray; // Get the guess-elements as an array
@@ -11,10 +16,34 @@ let answerActiveArray; // The answer-points of current attempt
 let answerColorCodes = [0, 0, 0, 0, 0];
 let activeRowNo = 1;
 
-// Get the RGB-codes of the template-color-elements
-const templateColorCodes = templateColorArray.map((color) => {
-  return window.getComputedStyle(color).backgroundColor;
-});
+// Set randomly the template-colors
+const setTemplateColors = () => {
+  let randomPickedColor;
+
+  for (let i = 0; i < 5; i++) {
+    let randomIndex = Math.floor(Math.random() * pickColorArray.length);
+    randomPickedColor = pickColorArray[randomIndex];
+    randomPickedColorCode =
+      window.getComputedStyle(randomPickedColor).backgroundColor;
+
+    templateColorArray[i].style.backgroundColor = randomPickedColorCode;
+
+    //templateColors.push(pickColorArray[randomIndex]);
+  }
+  //console.log("templateColors", templateColors);
+  //templateColorCode;
+
+  /* templateColorArray.forEach((templatePlace) => {
+    templatePlace.style.backgroundColor =  
+  })*/
+  templateColorCodes = templateColorArray.map((color) => {
+    return window.getComputedStyle(color).backgroundColor;
+  });
+
+  templateColorArray.forEach((tempPlace) => {
+    tempPlace.style.backgroundColor = randomPickedColor;
+  });
+};
 
 // Handle the click on chosen color and get its rgb-code, show/hide the highlight
 pickColorArray.forEach((colToPick) => {
@@ -105,8 +134,12 @@ checkBtn.addEventListener("click", () => {
   guessColorCodes = guessActiveArray.map((color) => {
     return window.getComputedStyle(color).backgroundColor;
   });
+
+  console.log("templateColorCodes", templateColorCodes);
+  console.log("guessColorCodes", guessColorCodes);
   compareColorCodes(templateColorCodes, guessColorCodes);
   changeActiveRow(activeRowNo);
 });
 
+setTemplateColors();
 startGuess();
