@@ -1,4 +1,5 @@
-// TODO: announce that player won
+// TODO: graphical side of the game, pop-out when the game is finished,...
+// TODO: polish the js-file (simple functions,...)
 // TODO: info about the rules
 
 let templateColorArray = Array.from(document.querySelectorAll(".template")); // Get the template-color-elements
@@ -112,6 +113,10 @@ const compareColorCodes = (template, guess) => {
   }
 };
 
+const checkIfWon = () => {
+  return JSON.stringify(answerColorCodes) === JSON.stringify([1, 1, 1, 1, 1]);
+};
+
 const changeActiveRow = (actRowNo) => {
   // Get the index of the active row/attempt and the folowing row/attempt in the array
   let activeAttemptPosition = attemptsArray.length - actRowNo;
@@ -139,9 +144,13 @@ checkBtn.addEventListener("click", () => {
     return window.getComputedStyle(color).backgroundColor;
   });
 
-  console.log("templateColorCodes", templateColorCodes);
-  console.log("guessColorCodes", guessColorCodes);
+  // console.log("templateColorCodes", templateColorCodes);
+  // console.log("guessColorCodes", guessColorCodes);
   compareColorCodes(templateColorCodes, guessColorCodes);
+  if (checkIfWon) {
+    alert("You`re the winner!");
+    return;
+  }
   changeActiveRow(activeRowNo);
 });
 
