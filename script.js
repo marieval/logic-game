@@ -1,4 +1,3 @@
-// TODO - CORRECT!! - if two colors are same and the second one is put correctly, it answers with white (instead of black)!!!
 // TODO: announce that player won
 // TODO: info about the rules
 
@@ -78,15 +77,20 @@ const compareColorCodes = (template, guess) => {
   for (let i = 0; i < template.length; i++) {
     if (template[i] === guess[i]) {
       answerColorCodes[i] = 1;
+      console.log(
+        `1: For index ${i} answer is ${answerColorCodes[i]}. Complete: [${answerColorCodes}]`
+      );
     }
   }
   // check the matching color on different position
   for (let i = 0; i < template.length; i++) {
     if (answerColorCodes[i] !== 1) {
       for (let j = 0; j < guess.length; j++) {
-        if (template[i] === guess[j]) {
+        if (template[i] === guess[j] && answerColorCodes[j] === 0) {
           answerColorCodes[j] = 2;
-          console.log(`No${j + 1} je na jiném místě`); // TODO: alert!
+          console.log(
+            `2: For index ${j} answer is ${answerColorCodes[j]}. Complete: [${answerColorCodes}]`
+          );
           break;
         }
       }
