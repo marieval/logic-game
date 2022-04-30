@@ -114,7 +114,11 @@ const compareColorCodes = (template, guess) => {
 };
 
 const checkIfWon = () => {
-  return JSON.stringify(answerColorCodes) === JSON.stringify([1, 1, 1, 1, 1]);
+  if (JSON.stringify(answerColorCodes) === JSON.stringify([1, 1, 1, 1, 1])) {
+    alert("You`re the winner!");
+  } else {
+    return;
+  }
 };
 
 const changeActiveRow = (actRowNo) => {
@@ -144,13 +148,8 @@ checkBtn.addEventListener("click", () => {
     return window.getComputedStyle(color).backgroundColor;
   });
 
-  // console.log("templateColorCodes", templateColorCodes);
-  // console.log("guessColorCodes", guessColorCodes);
   compareColorCodes(templateColorCodes, guessColorCodes);
-  if (checkIfWon) {
-    alert("You`re the winner!");
-    return;
-  }
+  checkIfWon();
   changeActiveRow(activeRowNo);
 });
 

@@ -9,14 +9,15 @@ body {
 
 .board {
   width: 300px;
-  padding: 20px;
-  border: 2px solid black;
+
+  margin: auto;
 }
 
 .templates {
-  background-color: gray;
+  background-color: grey;
   display: flex;
   justify-content: right;
+  border-radius: 3px 3px 0px 0px;
   padding: 10px;
 }
 
@@ -71,7 +72,7 @@ body {
 
 .colors {
   background-color: grey;
-  height: 70px;
+  height: 60px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -79,11 +80,44 @@ body {
 
 .color {
   width: 30px;
-  height: 50px;
+  height: 30px;
+  border-radius: 3px;
+}
+
+.color:hover {
+  transform: scale(1.15);
 }
 
 .activeColor {
-  border: 5px orange solid;
+  border: 2px solid rgb(55, 55, 55);
+  transform: scale(1.1);
+}
+
+.button-part {
+  background-color: grey;
+  border-top: 1px solid rgb(108, 108, 108);
+  border-radius: 0px 0px 3px 3px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#check-btn {
+  background-color: rgb(38, 38, 38);
+  color: white;
+  border: 0;
+  border-radius: 3px;
+  padding: 3px 20px;
+  text-align: center;
+  text-decoration: none #d1d5db solid;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+}
+
+#check-btn:hover {
+  background-color: rgb(245, 245, 245);
+  color: black;
 }
 
 #color1 {
