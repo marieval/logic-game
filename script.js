@@ -1,3 +1,4 @@
+// TODO: increase the size of the points+colors
 // TODO: graphical side of the game, pop-out when the game is finished,...
 // TODO: polish the js-file (simple functions,...)
 // TODO: info about the rules
@@ -15,6 +16,7 @@ let guessColorCodes;
 let answerActiveArray; // The answer-points of current attempt
 let answerColorCodes = [0, 0, 0, 0, 0];
 let activeRowNo = 1;
+let endOfGame = false;
 
 // Set randomly the template-colors
 const setTemplateColors = () => {
@@ -129,38 +131,47 @@ const compareColorCodes = (template, guess) => {
   }
 };
 
-const showWinner = () => {
-  alert("You`re the winner!");
+const showWinnerOrLoser = (message) => {
+  alert(`You´re the ${message}!`);
 };
 
 const checkIfWon = () => {
   if (JSON.stringify(answerColorCodes) === JSON.stringify([1, 1, 1, 1, 1])) {
     showTemplate();
-    setTimeout(showWinner, 1500);
+    setTimeout(showWinnerOrLoser("winner"), 2000);
+    endOfGame = true;
+  } else if (activeRowNo === 9) {
+    showTemplate();
+    setTimeout(showWinnerOrLoser("loser"), 2000);
+    endOfGame = true;
   } else {
     return;
   }
 };
 
 const changeActiveRow = (actRowNo) => {
-  // Get the index of the active row/attempt and the folowing row/attempt in the array
-  let activeAttemptPosition = attemptsArray.length - actRowNo;
-  let newActiveAttemptPosition = activeAttemptPosition - 1;
+  if (!endOfGame) {
+    // Get the index of the active row/attempt and the folowing row/attempt in the array
+    let activeAttemptPosition = attemptsArray.length - actRowNo;
+    let newActiveAttemptPosition = activeAttemptPosition - 1;
 
-  // Get the active divs of guesses and answers as arrays
-  let activeAttemptDivs = Array.from(
-    attemptsArray[activeAttemptPosition].children
-  );
-  let newActiveAttemptDivs = Array.from(
-    attemptsArray[newActiveAttemptPosition].children
-  );
+    // Get the active divs of guesses and answers as arrays
+    let activeAttemptDivs = Array.from(
+      attemptsArray[activeAttemptPosition].children
+    );
+    let newActiveAttemptDivs = Array.from(
+      attemptsArray[newActiveAttemptPosition].children
+    );
 
-  activeAttemptDivs[1].classList.remove("answers-active");
-  activeAttemptDivs[2].classList.remove("guesses-active");
-  newActiveAttemptDivs[1].classList.add("answers-active");
-  newActiveAttemptDivs[2].classList.add("guesses-active");
-  activeRowNo++;
-  startGuess();
+    activeAttemptDivs[1].classList.remove("answers-active");
+    activeAttemptDivs[2].classList.remove("guesses-active");
+    newActiveAttemptDivs[1].classList.add("answers-active");
+    newActiveAttemptDivs[2].classList.add("guesses-active");
+    activeRowNo++;
+    startGuess();
+  } else {
+    return;
+  }
 };
 
 // Event after pressing the Check-button:
@@ -171,6 +182,7 @@ checkBtn.addEventListener("click", () => {
 
   compareColorCodes(templateColorCodes, guessColorCodes);
   checkIfWon();
+
   changeActiveRow(activeRowNo);
 });
 
