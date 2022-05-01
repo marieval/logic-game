@@ -1,4 +1,4 @@
-// TODO: increase the size of the points+colors
+// TODO: make pop-out instead of alert at the end of game
 // TODO: graphical side of the game, pop-out when the game is finished,...
 // TODO: polish the js-file (simple functions,...)
 // TODO: info about the rules
