@@ -1,4 +1,5 @@
 // TODO: graphical side of the game, pop-out when the game is finished,...
+// TODO: hide the template colors
 // TODO: polish the js-file (simple functions,...)
 // TODO: info about the rules
 
@@ -43,6 +44,22 @@ const setTemplateColors = () => {
   templateColorArray.forEach((tempPlace) => {
     tempPlace.style.backgroundColor = randomPickedColor;
   });
+};
+
+// Hide the template-colors
+const hideTemplate = () => {
+  for (let i = 0; i < templateColorArray.length; i++) {
+    templateColorArray[i].style.visibility = "hidden";
+  }
+  /* templateColorArray.forEach((col) => {
+    col.style.visibility("hidden");
+  }); */
+};
+
+const showTemplate = () => {
+  for (let i = 0; i < templateColorArray.length; i++) {
+    templateColorArray[i].style.visibility = "visible";
+  }
 };
 
 // Handle the click on chosen color and get its rgb-code, show/hide the highlight
@@ -113,9 +130,14 @@ const compareColorCodes = (template, guess) => {
   }
 };
 
+const showWinner = () => {
+  alert("You`re the winner!", 10000);
+};
+
 const checkIfWon = () => {
   if (JSON.stringify(answerColorCodes) === JSON.stringify([1, 1, 1, 1, 1])) {
-    alert("You`re the winner!");
+    showTemplate();
+    setTimeout(showWinner, 2000);
   } else {
     return;
   }
@@ -154,4 +176,5 @@ checkBtn.addEventListener("click", () => {
 });
 
 setTemplateColors();
+hideTemplate();
 startGuess();
