@@ -1,5 +1,4 @@
 // TODO: graphical side of the game, pop-out when the game is finished,...
-// TODO: hide the template colors
 // TODO: polish the js-file (simple functions,...)
 // TODO: info about the rules
 
@@ -131,13 +130,13 @@ const compareColorCodes = (template, guess) => {
 };
 
 const showWinner = () => {
-  alert("You`re the winner!", 10000);
+  alert("You`re the winner!");
 };
 
 const checkIfWon = () => {
   if (JSON.stringify(answerColorCodes) === JSON.stringify([1, 1, 1, 1, 1])) {
     showTemplate();
-    setTimeout(showWinner, 2000);
+    setTimeout(showWinner, 1500);
   } else {
     return;
   }
