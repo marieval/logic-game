@@ -1,7 +1,5 @@
 // TODO: add the action for "New Game"-button
-// TODO: make pop-out instead of alert at the end of game
-// TODO: graphical side of the game, pop-out when the game is finished,...
-// TODO: polish the js-file (simple functions,...)
+// TODO: polish the js-file (DRY,...)
 // TODO: info about the rules
 
 let templateColorArray = Array.from(document.querySelectorAll(".template")); // Get the template-color-elements
@@ -9,6 +7,9 @@ const pickColorArray = Array.from(document.querySelectorAll(".color")); // Get t
 const attemptsArray = Array.from(document.querySelectorAll(".attempt")); // Get the attempt-rows as an array
 const checkBtn = document.querySelector("#check-btn");
 const newBtn = document.querySelector("#new-btn");
+const modal = document.querySelector("#myModal");
+const modalText = document.querySelector("#modal-text");
+const closeSpan = document.querySelector("#close-span");
 
 let templateColorCodes;
 let previousColorElement;
@@ -133,18 +134,19 @@ const compareColorCodes = (template, guess) => {
   }
 };
 
-const showWinnerOrLoser = (message) => {
-  alert(`You´re the ${message}!`);
+const showModal = (message) => {
+  modal.style.display = "block";
+  modalText.textContent = `You´re the ${message}`;
 };
 
 const checkIfWon = () => {
   if (JSON.stringify(answerColorCodes) === JSON.stringify([1, 1, 1, 1, 1])) {
     showTemplate();
-    setTimeout(showWinnerOrLoser("winner"), 2000);
+    showModal("winner! 😀");
     endOfGame = true;
   } else if (activeRowNo === 9) {
     showTemplate();
-    setTimeout(showWinnerOrLoser("loser"), 2000);
+    showModal("loser! 😟");
     endOfGame = true;
   } else {
     return;
@@ -186,6 +188,17 @@ checkBtn.addEventListener("click", () => {
   checkIfWon();
 
   changeActiveRow(activeRowNo);
+});
+
+// Close the modal after clicking x + after clicking outside the modal:
+closeSpan.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 });
 
 newBtn.addEventListener("click", () => {
