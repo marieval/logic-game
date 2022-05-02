@@ -1,3 +1,4 @@
+// TODO: add the action for "New Game"-button
 // TODO: make pop-out instead of alert at the end of game
 // TODO: graphical side of the game, pop-out when the game is finished,...
 // TODO: polish the js-file (simple functions,...)
@@ -7,6 +8,7 @@ let templateColorArray = Array.from(document.querySelectorAll(".template")); // 
 const pickColorArray = Array.from(document.querySelectorAll(".color")); // Get the pick-colors-elements as an array
 const attemptsArray = Array.from(document.querySelectorAll(".attempt")); // Get the attempt-rows as an array
 const checkBtn = document.querySelector("#check-btn");
+const newBtn = document.querySelector("#new-btn");
 
 let templateColorCodes;
 let previousColorElement;
@@ -54,7 +56,7 @@ const hideTemplate = () => {
   }
   /* templateColorArray.forEach((col) => {
     col.style.visibility("hidden");
-  }); */
+  });*/
 };
 
 const showTemplate = () => {
@@ -184,6 +186,23 @@ checkBtn.addEventListener("click", () => {
   checkIfWon();
 
   changeActiveRow(activeRowNo);
+});
+
+newBtn.addEventListener("click", () => {
+  /* 
+  templateColorCodes = undefined;
+  previousColorElement = undefined;
+  pickedColorCode = undefined;
+  guessActiveArray = undefined; // Get the guess-elements as an array
+  guessColorCodes = undefined;
+  answerActiveArray = undefined; // The answer-points of current attempt
+  answerColorCodes = [0, 0, 0, 0, 0];
+  activeRowNo = 1;
+  endOfGame = false;
+  guessPlace.style.backgroundColor = pickedColorCode;
+  setTemplateColors();
+  hideTemplate();
+  startGuess(); */
 });
 
 setTemplateColors();

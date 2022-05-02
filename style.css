@@ -9,27 +9,36 @@ body {
 
 h1 {
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .board {
-  width: 350px;
-
+  width: 380px;
   margin: auto;
+  margin-top: 20px;
 }
 
 .templates {
   background-color: grey;
   display: flex;
   justify-content: right;
+  align-items: center;
   border-radius: 3px 3px 0px 0px;
   padding: 10px;
 }
 
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  justify-content: left;
+  margin-right: 25px;
+}
+
 .template {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  margin: 7px;
+  width: 28px;
+  height: 28px;
+  margin: 5px;
   border: 1px solid black;
   border-radius: 50%;
 }
@@ -47,7 +56,7 @@ h1 {
 }
 
 .attempt-no {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
 }
 
 .answer {
@@ -62,9 +71,9 @@ h1 {
 
 .guess {
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin: 5px;
+  width: 28px;
+  height: 28px;
+  margin: 5px 3px;
   background-color: lightgrey;
   border: 1px solid black;
   border-radius: 50%;
@@ -111,7 +120,7 @@ h1 {
   background-color: rgb(38, 38, 38);
   color: white;
   height: 35px;
-  width: 200px;
+  width: 250px;
   border: 0;
   border-radius: 3px;
   padding: 3px 20px;
@@ -125,6 +134,19 @@ h1 {
 #check-btn:hover {
   background-color: rgb(245, 245, 245);
   color: black;
+}
+
+#new-btn {
+  background-color: rgb(222, 222, 222);
+  margin-right: 30px;
+  border: 0;
+  border-radius: 3px;
+  padding: 3px 5px;
+}
+
+#new-btn:hover {
+  background-color: rgb(68, 68, 68);
+  color: rgb(255, 248, 248);
 }
 
 #color1 {
