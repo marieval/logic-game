@@ -1,4 +1,3 @@
-// TODO: add the action for "New Game"-button
 // TODO: polish the js-file (DRY,...)
 // TODO: info about the rules
 
@@ -183,10 +182,8 @@ checkBtn.addEventListener("click", () => {
   guessColorCodes = guessActiveArray.map((color) => {
     return window.getComputedStyle(color).backgroundColor;
   });
-
   compareColorCodes(templateColorCodes, guessColorCodes);
   checkIfWon();
-
   changeActiveRow(activeRowNo);
 });
 
@@ -202,20 +199,7 @@ window.addEventListener("click", (event) => {
 });
 
 newBtn.addEventListener("click", () => {
-  /* 
-  templateColorCodes = undefined;
-  previousColorElement = undefined;
-  pickedColorCode = undefined;
-  guessActiveArray = undefined; // Get the guess-elements as an array
-  guessColorCodes = undefined;
-  answerActiveArray = undefined; // The answer-points of current attempt
-  answerColorCodes = [0, 0, 0, 0, 0];
-  activeRowNo = 1;
-  endOfGame = false;
-  guessPlace.style.backgroundColor = pickedColorCode;
-  setTemplateColors();
-  hideTemplate();
-  startGuess(); */
+  window.location.reload();
 });
 
 setTemplateColors();
