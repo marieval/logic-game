@@ -15,6 +15,7 @@ h1 {
 
 .board {
   width: 380px;
+  height: 100vh;
   margin: auto;
   margin-top: 20px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
