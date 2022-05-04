@@ -1,4 +1,5 @@
 // TODO: polish the js-file (DRY,...)
+// TODO: add responsiveness
 // TODO: info about the rules
 
 let templateColorArray = Array.from(document.querySelectorAll(".template")); // Get the template-color-elements
