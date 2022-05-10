@@ -1,4 +1,5 @@
-// TODO: polish the js-file (DRY,...)
+// TODO: polish the js-file
+// TODO: improve the visual
 // TODO: add responsiveness
 // TODO: info about the rules
 

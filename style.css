@@ -1,10 +1,31 @@
+:root {
+  --color-01: yellow;
+  --color-02: orange;
+  --color-03: red;
+  --color-04: blue;
+  --color-05: green;
+  --color-06: violet;
+  --color-07: sienna;
+  --color-08: black;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
 html {
-  box-sizing: border-box;
 }
 
 body {
+  box-sizing: border-box;
   margin: 0;
+  width: 100%;
   min-height: 100vh;
+  height: 100%;
 }
 
 h1 {
@@ -137,7 +158,8 @@ h1 {
   border-radius: 3px;
 }
 
-.color:hover {
+.color:hover,
+.color:active {
   transform: scale(1.15);
 }
 
@@ -217,35 +239,35 @@ h1 {
 }
 
 #color1 {
-  background-color: yellow;
+  background-color: var(--color-01);
 }
 
 #color2 {
-  background-color: orange;
+  background-color: var(--color-02);
 }
 
 #color3 {
-  background-color: red;
+  background-color: var(--color-03);
 }
 
 #color4 {
-  background-color: blue;
+  background-color: var(--color-04);
 }
 
 #color5 {
-  background-color: green;
+  background-color: var(--color-05);
 }
 
 #color6 {
-  background-color: violet;
+  background-color: var(--color-06);
 }
 
 #color7 {
-  background-color: sienna;
+  background-color: var(--color-07);
 }
 
 #color8 {
-  background-color: black;
+  background-color: var(--color-08);
 }
 
 /* #t1 {
